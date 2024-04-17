@@ -38,8 +38,23 @@ const updtTotalHandler = async (req, res) => {
     }
 };
 
+const getTotalHandler = async (req,res) => {
+try {
+    const fundGoal = await FundGoal.findOne({
+        order:[['createdAt', 'DESC']]
+    });
+    if(!fundGoal){
+        throw new Error ('No hay total de fondos');
+    }
+    res.status(200).json({totalAmount: fundGoal.totalAmount});
+} catch (error) {
+    res.status(500).json({success:false, message:error.message});
+}
+}
+
 module.exports = {
     createEntryHandler,
     getFundDataHandler,
-    updtTotalHandler
+    updtTotalHandler,
+    getTotalHandler
 };

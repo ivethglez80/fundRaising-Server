@@ -2,7 +2,9 @@ const {Router} = require ("express");
 
 const {  createEntryHandler,
     getFundDataHandler,
-    updtTotalHandler}  = require ("./../handlers/fundGoalHandler");
+    updtTotalHandler,
+    getTotalHandler
+}  = require ("./../handlers/fundGoalHandler");
 
 const fundRouter = Router();
 
@@ -16,5 +18,6 @@ const validate = (req,res,next)=> {
 fundRouter.post("/fundAdmin",validate, createEntryHandler);
 fundRouter.get("/fundAdmin", getFundDataHandler);
 fundRouter.put("/fundAdmin", updtTotalHandler);
+fundRouter.get("/total", getTotalHandler);
 
 module.exports = fundRouter;

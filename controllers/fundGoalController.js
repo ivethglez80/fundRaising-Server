@@ -18,4 +18,6 @@ const updtTotal = async (fundGoal, newEntry) => {
     }
 };
 
+
+
 module.exports = {createEntry, getFundData, updtTotal};
